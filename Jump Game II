@@ -1,0 +1,25 @@
+Approach : Greedy
+Time Complexity :O(n)
+Space Complexity :O(1)
+class Solution {
+    public int jump(int[] nums) {
+        int n=nums.length; int jumps=1;
+        //edge case
+        if(nums[0]==0 || n==1) return 0;
+        // Logic - Greedy Approach
+        int farthest=nums[0];
+        int curr_end=nums[0];
+        for(int i=1;i<n;i++){
+            if(i==n-1){
+                return jumps;
+            }
+            farthest=Math.max(farthest,nums[i]+i);
+            if(i==curr_end){
+                jumps++;
+                curr_end=farthest;
+            }
+        }
+        return jumps;
+        
+    }
+}
